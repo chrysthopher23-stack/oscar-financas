@@ -1,0 +1,20 @@
+# This workspace also contains local QA material and generated files.
+# Publish only the application, its lightweight preview server, and project docs.
+/*
+!/.gitignore
+!/README.md
+!/ABRIR_OSCAR_NO_PC.bat
+!/app/
+!/tools/
+
+# Keep only the tools needed to run and verify the local market-data preview.
+/tools/*
+!/tools/coinmarketcap_proxy.mjs
+!/tools/coinmarketcap_proxy.test.mjs
+!/tools/persistent_market_cache.mjs
+!/tools/persistent_market_cache.test.mjs
+!/tools/serve_web_preview.mjs
+
+# Local secrets and runtime state must never enter Git.
+/.secrets/
+/tools/.cache/
