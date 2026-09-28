@@ -34,7 +34,7 @@ The app has an entry experience and 12 navigable destinations. Features that dep
 | **General reports** | Builds monthly, 3-month, 6-month, and annual financial reports, including income, expenses, assets, crypto, and goals; supports report viewing and PDF export/printing. |
 | **Agenda** | Keeps dated financial events and reminders in one calendar workflow, with configurable notification timing where the platform supports it. |
 | **Calculator** | Projects compound growth from contribution, rate, and time assumptions to explore possible investment outcomes. |
-| **Plans** | Explains Basic, Plus, and Pro access levels and the capabilities associated with each tier. |
+| **Plans** | Explains Basic, Plus, and Pro access levels and the capabilities associated with each tier. Select a plan to try its access level in the app, including Plus and Pro, and explore the features each unlocks. |
 | **Oscar Club** | Presents a locally defined catalog of partner offers and categories. |
 | **Account** | Stores a local profile and provides access to the app's legal documents and current plan information. |
 | **Settings** | Controls locale, currency, region, agenda reminders, privacy/display preferences, and personal-history reset. |
