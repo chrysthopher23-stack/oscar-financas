@@ -14,6 +14,7 @@ import '../../../shared/formatting/currency_amount_input_formatter.dart';
 import '../../../shared/formatting/money_formatter.dart';
 import '../../../shared/widgets/financial_visibility_button.dart';
 import '../../../shared/widgets/oscar_feature_scaffold.dart';
+import '../../../shared/widgets/bounded_modal_sheet.dart';
 import '../../../shared/widgets/demo_display_names.dart';
 import '../application/objectives_view_model.dart';
 import '../domain/financial_objective.dart';
@@ -484,7 +485,7 @@ final class _ObjectivesPageState extends State<ObjectivesPage> {
     var saving = false;
     final formKey = GlobalKey<FormState>();
     TransitionRoute<dynamic>? sheetRoute;
-    final saved = await showModalBottomSheet<bool>(
+    final saved = await showOscarBoundedModalSheet<bool>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
@@ -777,7 +778,7 @@ final class _ObjectivesPageState extends State<ObjectivesPage> {
     final amount = TextEditingController();
     final formKey = GlobalKey<FormState>();
     TransitionRoute<dynamic>? sheetRoute;
-    final saved = await showModalBottomSheet<bool>(
+    final saved = await showOscarBoundedModalSheet<bool>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,

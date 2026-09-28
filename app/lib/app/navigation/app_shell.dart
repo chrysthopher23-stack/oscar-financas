@@ -208,6 +208,8 @@ final class _AppShellState extends State<AppShell> {
                   fxRepository: _fxRepository,
                 ),
                 extraIncome: _services.extraIncomeContributionPort,
+                investments: _services.investmentRepository,
+                objectives: _services.objectiveRepository,
                 fxRepository: _fxRepository,
               ),
               currency: widget.preferences.currency,

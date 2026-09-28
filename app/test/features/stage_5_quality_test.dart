@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:oscar_financas/core/money/money.dart';
 import 'package:oscar_financas/core/time/year_month.dart';
 import 'package:oscar_financas/features/screen_1_financial/screen_1_financial.dart';
+import 'package:oscar_financas/features/screen_3_investments/domain/asset_family.dart';
+import 'package:oscar_financas/features/screen_3_investments/domain/instrument_identity.dart';
 import 'package:oscar_financas/features/screen_5_general_reports/data/pdf_report_renderer.dart';
 import 'package:oscar_financas/features/screen_5_general_reports/domain/general_report_document.dart';
 import 'package:oscar_financas/features/screen_5_general_reports/domain/report_period.dart';
@@ -142,6 +144,58 @@ void main() {
                 amountMinor: 10000,
               ),
             ],
+            investments: [
+              ReportInvestmentItem(
+                identity: InstrumentIdentity(
+                  providerAssetId: 'asset-${item.$1}',
+                  family: AssetFamily.etf,
+                  symbol: 'BND',
+                  officialName: 'Bond ETF',
+                  exchangeMic: 'XNYS',
+                  countryCode: 'US',
+                  currency: item.$2,
+                ),
+                principalMinor: 50000,
+                monthlyReturnMinor: 1000,
+                quantity: '2',
+              ),
+              ReportInvestmentItem(
+                identity: InstrumentIdentity(
+                  providerAssetId: 'crypto-${item.$1}',
+                  family: AssetFamily.crypto,
+                  symbol: 'BTC',
+                  officialName: 'Bitcoin',
+                  exchangeMic: '',
+                  countryCode: 'US',
+                  currency: item.$2,
+                ),
+                principalMinor: 50000,
+                monthlyReturnMinor: 1000,
+                quantity: '0.01',
+              ),
+            ],
+            objectives: const [
+              ReportObjectiveItem(
+                id: 'objective:demo-emergency-reserve',
+                name: 'Reserva de emergência',
+                currency: CurrencyCode.brl,
+                balanceMinor: 300000,
+                targetMinor: 1000000,
+                contributionMinor: 20000,
+                monthlyYieldMinor: 2000,
+                yieldIsEstimate: true,
+              ),
+              ReportObjectiveItem(
+                id: 'objective:demo-first-100k',
+                name: 'Meus primeiros 100K',
+                currency: CurrencyCode.brl,
+                balanceMinor: 500000,
+                targetMinor: 10000000,
+                contributionMinor: 50000,
+                monthlyYieldMinor: 3000,
+                yieldIsEstimate: true,
+              ),
+            ],
           ),
         ],
         localeTag: item.$1,
@@ -150,6 +204,7 @@ void main() {
       );
       final bytes = await renderer.render(document);
       expect(bytes.length, greaterThan(10000), reason: item.$1);
+      expect(document.pdfPageCount, 2, reason: item.$1);
     }
   });
 }

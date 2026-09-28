@@ -14,6 +14,7 @@ import '../../../shared/controllers/month_controller.dart';
 import '../../../shared/formatting/currency_amount_input_formatter.dart';
 import '../../../shared/formatting/money_formatter.dart';
 import '../../../shared/widgets/oscar_feature_scaffold.dart';
+import '../../../shared/widgets/bounded_modal_sheet.dart';
 import '../application/extra_income_view_model.dart';
 import '../../screen_3_investments/domain/fx_quote_set.dart';
 import '../domain/extra_income_entry.dart';
@@ -255,7 +256,7 @@ final class _ExtraIncomePageState extends State<ExtraIncomePage>
     );
     var recurring = existing?.recurring ?? false;
     var include = existing?.includeInFinancialIncome ?? true;
-    await showModalBottomSheet<void>(
+    await showOscarBoundedModalSheet<void>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,

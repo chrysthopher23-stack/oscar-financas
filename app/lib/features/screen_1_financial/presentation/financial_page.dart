@@ -15,6 +15,7 @@ import '../../../shared/formatting/currency_amount_input_formatter.dart';
 import '../../../shared/formatting/installment_formatter.dart';
 import '../../../shared/formatting/money_formatter.dart';
 import '../../../shared/widgets/oscar_feature_scaffold.dart';
+import '../../../shared/widgets/bounded_modal_sheet.dart';
 import '../../../shared/widgets/demo_display_names.dart';
 import '../../screen_2_extra_income/screen_2_extra_income.dart';
 import '../../screen_3_investments/domain/fx_quote_set.dart';
@@ -230,7 +231,7 @@ final class _FinancialPageState extends State<FinancialPage> {
     final totalInstallments = TextEditingController(
       text: savedProgress?.total.toString() ?? '',
     );
-    await showModalBottomSheet<void>(
+    await showOscarBoundedModalSheet<void>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,

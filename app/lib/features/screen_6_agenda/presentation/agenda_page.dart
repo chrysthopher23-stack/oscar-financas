@@ -7,6 +7,7 @@ import '../../../app/theme/app_colors.dart';
 import '../../../core/time/year_month.dart';
 import '../../../shared/controllers/month_controller.dart';
 import '../../../shared/widgets/oscar_feature_scaffold.dart';
+import '../../../shared/widgets/bounded_modal_sheet.dart';
 import '../application/agenda_view_model.dart';
 import '../application/notification_contracts.dart';
 import '../domain/agenda_event.dart';
@@ -32,7 +33,8 @@ final class AgendaPage extends StatefulWidget {
   State<AgendaPage> createState() => _AgendaPageState();
 }
 
-final class _AgendaPageState extends State<AgendaPage> {
+final class _AgendaPageState extends State<AgendaPage>
+    implements AgendaPageTestApi {
   late final MonthController _monthController;
   late final AgendaViewModel _viewModel;
   DateTime? _selectedDay;
@@ -199,7 +201,7 @@ final class _AgendaPageState extends State<AgendaPage> {
     var time = const TimeOfDay(hour: 9, minute: 0);
     var recurrence = EventRecurrence.none;
     var reminder = widget.defaultReminder;
-    await showModalBottomSheet<void>(
+    await showOscarBoundedModalSheet<void>(
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
@@ -246,28 +248,40 @@ final class _AgendaPageState extends State<AgendaPage> {
                   },
                 ),
                 const SizedBox(height: 10),
-                DropdownButtonFormField<EventRecurrence>(
-                  isExpanded: true,
-                  initialValue: recurrence,
+                InputDecorator(
                   decoration: InputDecoration(
                     labelText: uiText(context, 'Recorrência'),
+                    contentPadding: const EdgeInsets.fromLTRB(16, 6, 10, 6),
                   ),
-                  items:
-                      const {
-                            EventRecurrence.none: 'Nenhuma',
-                            EventRecurrence.weekly: 'Semanal',
-                            EventRecurrence.monthly: 'Mensal',
-                            EventRecurrence.yearly: 'Anual',
-                          }.entries
-                          .map(
-                            (entry) => DropdownMenuItem(
-                              value: entry.key,
-                              child: Text(entry.value),
-                            ),
-                          )
-                          .toList(),
-                  onChanged: (value) =>
-                      setSheetState(() => recurrence = value!),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<EventRecurrence>(
+                      key: const ValueKey('agenda-recurrence-dropdown'),
+                      isExpanded: true,
+                      menuMaxHeight: 280,
+                      dropdownColor: Theme.of(context)
+                          .colorScheme
+                          .surfaceContainerHigh,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      value: recurrence,
+                      items:
+                          const {
+                                EventRecurrence.none: 'Nenhuma',
+                                EventRecurrence.weekly: 'Semanal',
+                                EventRecurrence.monthly: 'Mensal',
+                                EventRecurrence.yearly: 'Anual',
+                              }.entries
+                              .map(
+                                (entry) => DropdownMenuItem(
+                                  value: entry.key,
+                                  child: Text(entry.value),
+                                ),
+                              )
+                              .toList(),
+                      onChanged: (value) => setSheetState(
+                        () => recurrence = value ?? EventRecurrence.none,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 DropdownButtonFormField<ReminderPreset>(
@@ -346,6 +360,10 @@ final class _AgendaPageState extends State<AgendaPage> {
     );
   }
 
+  @visibleForTesting
+  @override
+  Future<void> showEventFormForTest(DateTime day) => _showEventForm(day);
+
   Future<void> _showEventDetails(
     AgendaEvent event,
     BuildContext daySheetContext,
@@ -385,4 +403,9 @@ final class _AgendaPageState extends State<AgendaPage> {
       ),
     );
   }
+}
+
+@visibleForTesting
+abstract interface class AgendaPageTestApi implements State<AgendaPage> {
+  Future<void> showEventFormForTest(DateTime day);
 }

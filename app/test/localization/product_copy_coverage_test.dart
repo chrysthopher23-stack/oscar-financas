@@ -6,19 +6,39 @@ import 'package:oscar_financas/core/localization/app_locale.dart';
 import 'package:oscar_financas/shared/widgets/localized_text.dart';
 
 void main() {
+  test('investment and extra-income sheet labels are registered in all locales', () {
+    const formLabels = [
+      'Cadastro manual',
+      'Confirmar posição',
+      'Novo serviço',
+      'Nova venda',
+      'Descrição',
+    ];
+
+    for (final locale in SupportedAppLocale.values) {
+      for (final label in formLabels) {
+        expect(() => uiTextForLocale(locale, label), returnsNormally);
+      }
+    }
+  });
   test('reviewed static product copy is available in all five locales', () {
     final phrases = <String>{};
     final root = Directory('lib/features');
-    final pattern = RegExp(r"Text\(\s*'([^'\$]*)'", multiLine: true);
+    final patterns = [
+      RegExp(r"Text\(\s*'([^'\$]*)'", multiLine: true),
+      RegExp(r"uiText\(\s*context\s*,\s*'([^'\$]*)'", multiLine: true),
+    ];
     for (final entity in root.listSync(recursive: true)) {
       if (entity is! File || !entity.path.endsWith('.dart')) continue;
       if (!entity.path.replaceAll('\\', '/').contains('/presentation/')) {
         continue;
       }
       final source = entity.readAsStringSync();
-      for (final match in pattern.allMatches(source)) {
-        final phrase = match.group(1)!.replaceAll(r'\n', '\n');
-        if (phrase.trim().isNotEmpty) phrases.add(phrase);
+      for (final pattern in patterns) {
+        for (final match in pattern.allMatches(source)) {
+          final phrase = match.group(1)!.replaceAll(r'\n', '\n');
+          if (phrase.trim().isNotEmpty) phrases.add(phrase);
+        }
       }
     }
     const universal = {
@@ -39,7 +59,10 @@ void main() {
     )) {
       for (final phrase in phrases) {
         if (universal.contains(phrase)) continue;
-        if (uiTextForLocale(locale, phrase) == phrase) {
+        try {
+          if (uiTextForLocale(locale, phrase) != phrase) continue;
+          missing.add('${locale.tag}: $phrase');
+        } on StateError {
           missing.add('${locale.tag}: $phrase');
         }
       }

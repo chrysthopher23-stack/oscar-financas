@@ -15,8 +15,13 @@ void main() {
   testWidgets('populated extra-income months have finite scrollable bodies', (
     tester,
   ) async {
-    await tester.binding.setSurfaceSize(const Size(320, 740));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
+    const viewport = Size(320, 740);
+    tester.view.devicePixelRatio = 1;
+    tester.view.physicalSize = viewport;
+    addTearDown(() {
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+    });
     SharedPreferences.setMockInitialValues({});
     final preferences = await SharedPreferences.getInstance();
     final visibility = FinancialVisibilityController(preferences);
@@ -66,5 +71,40 @@ void main() {
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
     expect(scrollable.position.maxScrollExtent, lessThan(1500));
+
+    final addService = find.text('Add service');
+    await tester.ensureVisible(addService);
+    await tester.tap(addService);
+    await tester.pumpAndSettle();
+    expect(find.text('New service'), findsOneWidget);
+    final serviceSheet = find.byKey(const ValueKey('oscarBoundedModalSheet'));
+    expect(serviceSheet, findsOneWidget);
+    expect(
+      tester.getRect(serviceSheet).height,
+      lessThanOrEqualTo(viewport.height * .88),
+    );
+    await tester.tap(find.text('Cancel'));
+    await tester.pumpAndSettle();
+
+    await tester.drag(find.byType(ListView).first, const Offset(0, 900));
+    await tester.pumpAndSettle();
+    final salesTab = find.descendant(
+      of: find.byType(Tab).at(1),
+      matching: find.text('Sales'),
+    );
+    await tester.tap(salesTab);
+    await tester.pumpAndSettle();
+    final addSale = find.text('Add sale');
+    await tester.ensureVisible(addSale);
+    await tester.tap(addSale);
+    await tester.pumpAndSettle();
+    expect(find.text('New sale'), findsOneWidget);
+    final saleSheet = find.byKey(const ValueKey('oscarBoundedModalSheet'));
+    expect(saleSheet, findsOneWidget);
+    expect(
+      tester.getRect(saleSheet).height,
+      lessThanOrEqualTo(viewport.height * .88),
+    );
+    expect(tester.takeException(), isNull);
   });
 }

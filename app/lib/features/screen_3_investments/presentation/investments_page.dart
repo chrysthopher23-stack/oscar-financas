@@ -15,6 +15,7 @@ import '../../../shared/controllers/month_controller.dart';
 import '../../../shared/formatting/currency_amount_input_formatter.dart';
 import '../../../shared/formatting/money_formatter.dart';
 import '../../../shared/widgets/oscar_feature_scaffold.dart';
+import '../../../shared/widgets/bounded_modal_sheet.dart';
 import '../application/investments_view_model.dart';
 import '../domain/asset_catalog.dart';
 import '../domain/asset_market_series.dart';
@@ -67,6 +68,7 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
   final _searchController = TextEditingController();
   final _searchFocus = FocusNode();
   final _searchLink = LayerLink();
+  final _searchFieldKey = GlobalKey();
   OverlayEntry? _searchOverlay;
 
   @override
@@ -153,6 +155,7 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
                   ),
                 const SizedBox(height: 12),
                 CompositedTransformTarget(
+                  key: _searchFieldKey,
                   link: _searchLink,
                   child: TextField(
                     controller: _searchController,
@@ -274,21 +277,37 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
     _searchOverlay = OverlayEntry(
       builder: (overlayContext) {
         final media = MediaQuery.of(overlayContext);
-        final keyboardTop = media.size.height - media.viewInsets.bottom;
-        final targetBox = context.findRenderObject() as RenderBox?;
-        final fieldBottom = targetBox == null
-            ? 180.0
-            : targetBox.localToGlobal(Offset.zero).dy + 120;
-        final available = math.max(180.0, keyboardTop - fieldBottom - 12);
-        final maxHeight = math.min(media.size.height * .70, available);
+        final targetBox =
+            _searchFieldKey.currentContext?.findRenderObject() as RenderBox?;
+        if (targetBox == null || !targetBox.hasSize) {
+          return const SizedBox.shrink();
+        }
+        final fieldTop = targetBox.localToGlobal(Offset.zero).dy;
+        final fieldBottom = fieldTop + targetBox.size.height;
+        final viewportTop = media.padding.top + 8;
+        final viewportBottom =
+            media.size.height -
+            media.viewInsets.bottom -
+            media.padding.bottom -
+            8;
+        final availableBelow = math.max(0.0, viewportBottom - fieldBottom - 8);
+        final availableAbove = math.max(0.0, fieldTop - viewportTop - 8);
+        final placeBelow =
+            availableBelow >= 160 || availableBelow >= availableAbove;
+        final available = placeBelow ? availableBelow : availableAbove;
+        final maxHeight = math.min(media.size.height * .65, available);
+        if (maxHeight < 112) return const SizedBox.shrink();
         final results = _viewModel.state.searchResults;
         return Positioned(
           width: math.min(media.size.width - 36, 680),
           child: CompositedTransformFollower(
             link: _searchLink,
             showWhenUnlinked: false,
-            offset: const Offset(0, 62),
+            offset: placeBelow
+                ? Offset(0, targetBox.size.height + 8)
+                : Offset(0, -maxHeight - 8),
             child: Material(
+              key: const ValueKey('investmentSearchResultsOverlay'),
               elevation: 14,
               borderRadius: BorderRadius.circular(18),
               clipBehavior: Clip.antiAlias,
@@ -297,7 +316,10 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Flexible(
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: math.max(0.0, maxHeight - 72),
+                      ),
                       child: results.isEmpty
                           ? const Padding(
                               padding: EdgeInsets.all(18),
@@ -331,7 +353,9 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
                     ListTile(
                       leading: const Icon(Icons.add_circle_outline),
                       title: Text(
-                        'Cadastrar “${_searchController.text.trim()}” manualmente',
+                        _searchController.text.trim().isEmpty
+                            ? 'Adicionar manualmente'
+                            : 'Cadastrar “${_searchController.text.trim()}” manualmente',
                       ),
                       onTap: () => _showPositionForm(
                         null,
@@ -376,7 +400,7 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
     final quantity = TextEditingController();
     var family = selected?.family ?? AssetFamily.otherManual;
     var currency = selected?.currency ?? widget.currency;
-    await showModalBottomSheet<void>(
+    await showOscarBoundedModalSheet<void>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
@@ -394,9 +418,7 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    selected == null
-                        ? 'Cadastrar investimento manualmente'
-                        : 'Confirmar nova posição',
+                    selected == null ? 'Cadastro manual' : 'Confirmar posição',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
@@ -563,7 +585,7 @@ final class _InvestmentsPageState extends State<InvestmentsPage> {
       widget.onBlocked();
       return;
     }
-    await showModalBottomSheet<void>(
+    await showOscarBoundedModalSheet<void>(
       context: context,
       useSafeArea: true,
       isScrollControlled: true,
