@@ -168,7 +168,7 @@ const frFrMessages = <String, String>{
       "Touchez un forfait pour voir les fonctionnalités disponibles.",
   "Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.": "Un parrainage éligible peut offrir jusqu’à 40 % de remise. Les avantages ne se cumulent pas : la remise valide la plus élevée s’applique.",
   "O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.": "Les invitations sécurisées seront activées lorsque les comptes et la validation serveur seront disponibles.",
-  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.": "Des avantages utiles et transparents pour l’éducation, le bien-être et le quotidien. Les offres n’affectent jamais votre Oscar Score et n’accèdent pas à vos données financières.",
+  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.": "Des avantages utiles et transparents pour soutenir votre éducation, votre bien-être et votre vie quotidienne.",
   "O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.": "Oscar Finanças peut recevoir une commission si vous achetez via ce lien. Vous serez redirigé vers l’espace du partenaire.",
   "O link deste parceiro ainda não está disponível.":
       "Le lien de ce partenaire n’est pas encore disponible.",

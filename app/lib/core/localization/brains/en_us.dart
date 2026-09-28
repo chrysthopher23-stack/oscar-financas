@@ -168,7 +168,7 @@ const enUsMessages = <String, String>{
       "Tap a plan to view its available features.",
   "Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.": "An eligible referral may offer up to 40% off. Benefits cannot be combined: the highest valid discount always applies.",
   "O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.": "Secure invitations will be enabled when accounts and server validation are available.",
-  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.": "Useful, transparent benefits for education, well-being and everyday life. Offers never affect your Oscar Score or access financial data.",
+  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.": "Useful and transparent benefits to support your education, well-being and everyday life.",
   "O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.": "Oscar Finanças may receive a commission if you buy through this link. You will be directed to the partner environment.",
   "O link deste parceiro ainda não está disponível.":
       "This partner link is not available yet.",

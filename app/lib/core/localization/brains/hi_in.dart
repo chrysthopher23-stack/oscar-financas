@@ -170,7 +170,7 @@ const hiInMessages = <String, String>{
   "Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.": "योग्य रेफरल पर 40% तक छूट मिल सकती है। लाभ जोड़े नहीं जाते; सबसे बड़ी मान्य छूट लागू होती है।",
   "O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.":
       "खाते और सर्वर सत्यापन उपलब्ध होने पर सुरक्षित आमंत्रण सक्रिय होंगे।",
-  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.": "शिक्षा, कल्याण और दैनिक जीवन के लिए उपयोगी और पारदर्शी लाभ। ऑफर आपके Oscar Score को कभी नहीं बदलते और वित्तीय डेटा तक पहुंच नहीं रखते।",
+  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.": "आपकी शिक्षा, कल्याण और दैनिक जीवन में मदद के लिए उपयोगी और पारदर्शी लाभ।",
   "O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.": "इस लिंक से खरीदने पर Oscar Finanças को कमीशन मिल सकता है। आपको पार्टनर के पेज पर भेजा जाएगा।",
   "O link deste parceiro ainda não está disponível.":
       "इस पार्टनर का लिंक अभी उपलब्ध नहीं है।",

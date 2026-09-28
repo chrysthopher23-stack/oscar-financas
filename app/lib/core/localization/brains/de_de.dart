@@ -170,7 +170,7 @@ const deDeMessages = <String, String>{
       "Tippen Sie auf einen Tarif, um die verfügbaren Funktionen anzuzeigen.",
   "Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.": "Eine berechtigte Empfehlung kann bis zu 40 % Rabatt bieten. Vorteile sind nicht kombinierbar; es gilt stets der höchste gültige Rabatt.",
   "O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.": "Sichere Einladungen werden aktiviert, sobald Konten und Serverprüfung verfügbar sind.",
-  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.": "Nützliche, transparente Vorteile für Bildung, Wohlbefinden und Alltag. Angebote beeinflussen weder Ihren Oscar Score noch greifen sie auf Finanzdaten zu.",
+  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.": "Nützliche und transparente Vorteile zur Unterstützung von Bildung, Wohlbefinden und Alltag.",
   "O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.": "Oscar Finanças kann eine Provision erhalten, wenn Sie über diesen Link kaufen. Sie werden zum Partner weitergeleitet.",
   "O link deste parceiro ainda não está disponível.":
       "Der Link dieses Partners ist noch nicht verfügbar.",

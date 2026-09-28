@@ -31,7 +31,7 @@ const supplementalUiTranslations = <SupportedAppLocale, Map<String, String>>{
         'Tap a plan to view its available features.',
     'Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.': 'An eligible referral may offer up to 40% off. Benefits cannot be combined: the highest valid discount always applies.',
     'O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.': 'Secure invitations will be enabled when accounts and server validation are available.',
-    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.': 'Useful, transparent benefits for education, well-being and everyday life. Offers never affect your Oscar Score or access financial data.',
+    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.': 'Useful and transparent benefits to support your education, well-being and everyday life.',
     'O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.': 'Oscar Finanças may receive a commission if you buy through this link. You will be directed to the partner environment.',
     'O link deste parceiro ainda não está disponível.':
         'This partner link is not available yet.',
@@ -112,7 +112,7 @@ const supplementalUiTranslations = <SupportedAppLocale, Map<String, String>>{
         'Tippen Sie auf einen Tarif, um die verfügbaren Funktionen anzuzeigen.',
     'Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.': 'Eine berechtigte Empfehlung kann bis zu 40 % Rabatt bieten. Vorteile sind nicht kombinierbar; es gilt stets der höchste gültige Rabatt.',
     'O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.': 'Sichere Einladungen werden aktiviert, sobald Konten und Serverprüfung verfügbar sind.',
-    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.': 'Nützliche, transparente Vorteile für Bildung, Wohlbefinden und Alltag. Angebote beeinflussen weder Ihren Oscar Score noch greifen sie auf Finanzdaten zu.',
+    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.': 'Nützliche und transparente Vorteile zur Unterstützung von Bildung, Wohlbefinden und Alltag.',
     'O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.': 'Oscar Finanças kann eine Provision erhalten, wenn Sie über diesen Link kaufen. Sie werden zum Partner weitergeleitet.',
     'O link deste parceiro ainda não está disponível.':
         'Der Link dieses Partners ist noch nicht verfügbar.',
@@ -191,7 +191,7 @@ const supplementalUiTranslations = <SupportedAppLocale, Map<String, String>>{
         'Touchez un forfait pour voir les fonctionnalités disponibles.',
     'Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.': 'Un parrainage éligible peut offrir jusqu’à 40 % de remise. Les avantages ne se cumulent pas : la remise valide la plus élevée s’applique.',
     'O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.': 'Les invitations sécurisées seront activées lorsque les comptes et la validation serveur seront disponibles.',
-    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.': 'Des avantages utiles et transparents pour l’éducation, le bien-être et le quotidien. Les offres n’affectent jamais votre Oscar Score et n’accèdent pas à vos données financières.',
+    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.': 'Des avantages utiles et transparents pour soutenir votre éducation, votre bien-être et votre vie quotidienne.',
     'O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.': 'Oscar Finanças peut recevoir une commission si vous achetez via ce lien. Vous serez redirigé vers l’espace du partenaire.',
     'O link deste parceiro ainda não está disponível.':
         'Le lien de ce partenaire n’est pas encore disponible.',
@@ -274,7 +274,7 @@ const supplementalUiTranslations = <SupportedAppLocale, Map<String, String>>{
     'Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.': 'योग्य रेफरल पर 40% तक छूट मिल सकती है। लाभ जोड़े नहीं जाते; सबसे बड़ी मान्य छूट लागू होती है।',
     'O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.':
         'खाते और सर्वर सत्यापन उपलब्ध होने पर सुरक्षित आमंत्रण सक्रिय होंगे।',
-    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.': 'शिक्षा, कल्याण और दैनिक जीवन के लिए उपयोगी और पारदर्शी लाभ। ऑफर आपके Oscar Score को कभी नहीं बदलते और वित्तीय डेटा तक पहुंच नहीं रखते।',
+    'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.': 'आपकी शिक्षा, कल्याण और दैनिक जीवन में मदद के लिए उपयोगी और पारदर्शी लाभ।',
     'O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.': 'इस लिंक से खरीदने पर Oscar Finanças को कमीशन मिल सकता है। आपको पार्टनर के पेज पर भेजा जाएगा।',
     'O link deste parceiro ainda não está disponível.':
         'इस पार्टनर का लिंक अभी उपलब्ध नहीं है।',

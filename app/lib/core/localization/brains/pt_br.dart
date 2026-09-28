@@ -217,7 +217,7 @@ const ptBrMessages = <String, String>{
       "Toque em um plano para visualizar os recursos disponíveis.",
   "Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.": "Uma indicação elegível pode oferecer até 40% de desconto. Benefícios não são cumulativos: prevalece sempre o maior desconto válido.",
   "O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.": "O convite seguro será habilitado quando contas e validação do servidor estiverem disponíveis.",
-  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.": "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.",
+  "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.": "Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.",
   "O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.": "O Oscar Finanças poderá receber uma comissão se você contratar ou comprar por este link. Você será direcionado ao ambiente do parceiro.",
   "O link deste parceiro ainda não está disponível.":
       "O link deste parceiro ainda não está disponível.",

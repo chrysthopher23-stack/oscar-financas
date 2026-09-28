@@ -41,25 +41,14 @@ final class _OscarClubPageState extends State<OscarClubPage> {
       builder: (context, snapshot) {
         final offers = snapshot.data ?? const <PartnerOffer>[];
         return ListView(
-          padding: const EdgeInsets.fromLTRB(18, 10, 18, 28),
+          padding: const EdgeInsets.fromLTRB(12, 10, 12, 28),
           children: [
             Card(
               child: Padding(
-                padding: const EdgeInsets.all(18),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Icon(Icons.handshake_outlined, size: 34),
-                    const SizedBox(height: 10),
-                    Text(
-                      'Oscar Clube',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    const SizedBox(height: 6),
-                    const Text(
-                      'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática. Ofertas nunca alteram seu Oscar Score nem acessam seus dados financeiros.',
-                    ),
-                  ],
+                padding: const EdgeInsets.all(12),
+                child: const Text(
+                  'Benefícios úteis e transparentes para apoiar sua educação, bem-estar e vida prática.',
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
