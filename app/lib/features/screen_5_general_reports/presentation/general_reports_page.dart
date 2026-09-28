@@ -528,6 +528,8 @@ final class _ReportPageCard extends StatelessWidget {
 
   Widget _summaryPanel(BuildContext context, String score, String reserve) {
     final netColor = page.netMinor >= 0 ? AppColors.emerald : AppColors.ruby;
+    final theme = Theme.of(context);
+    final summaryTextColor = theme.colorScheme.onSurface;
     final showReserve =
         page.emergencyReserve != null ||
         page.financial.reserveCoverageMilliMonths > 0 ||
@@ -535,7 +537,7 @@ final class _ReportPageCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        color: theme.colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Theme.of(context).dividerColor),
       ),
@@ -577,13 +579,17 @@ final class _ReportPageCard extends StatelessWidget {
           Text(
             '${uiText(context, 'report.health')}: $score',
             translate: false,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: summaryTextColor,
+            ),
           ),
           if (showReserve)
             Text(
               '${uiText(context, 'report.fund')}: $reserve${page.financial.reserveCoverageMilliMonths > 0 ? ' · ${(page.financial.reserveCoverageMilliMonths / 1000).toStringAsFixed(1)} ${uiText(context, 'report.months')}' : ''}',
               translate: false,
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: summaryTextColor,
+              ),
             ),
         ],
       ),

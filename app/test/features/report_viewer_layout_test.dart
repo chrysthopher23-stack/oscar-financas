@@ -5,6 +5,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:oscar_financas/core/money/money.dart';
 import 'package:oscar_financas/core/time/year_month.dart';
+import 'package:oscar_financas/app/theme/app_theme.dart';
+import 'package:oscar_financas/app/theme/app_colors.dart';
 import 'package:oscar_financas/core/localization/app_locale.dart';
 import 'package:oscar_financas/core/localization/app_strings.dart';
 import 'package:oscar_financas/features/screen_1_financial/application/financial_snapshot_port.dart';
@@ -17,6 +19,93 @@ import 'package:oscar_financas/features/screen_5_general_reports/presentation/ge
 import 'package:oscar_financas/shared/widgets/localized_text.dart' as localized;
 
 void main() {
+  testWidgets('monthly summary has readable foreground in light theme', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const material.Size(390, 1200);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    const financial = MonthlyFinancialSnapshot(
+      month: YearMonth(2026, 9),
+      currency: CurrencyCode.brl,
+      mainIncomeMinor: 2200000,
+      expenseMinor: 1600000,
+      installmentMinor: 0,
+      netMinor: 600000,
+      score: 75,
+      scoreLabel: 'Saudável',
+      reserveBalanceMinor: 90000,
+      reserveCoverageMilliMonths: 1000,
+      expenses: [],
+    );
+    final document = GeneralReportDocument(
+      period: ReportPeriod.currentMonth,
+      pages: [
+        MonthlyReportPage(
+          financial: financial,
+          extraIncomeMinor: 0,
+          objectives: [
+            ReportObjectiveItem(
+              id: 'emergency-reserve',
+              name: 'Reserva de Emergência',
+              currency: CurrencyCode.brl,
+              balanceMinor: 90000,
+              targetMinor: 500000,
+              contributionMinor: 0,
+              monthlyYieldMinor: 0,
+              yieldIsEstimate: true,
+            ),
+          ],
+        ),
+      ],
+      localeTag: 'pt-BR',
+      currency: CurrencyCode.brl,
+      generatedAt: DateTime(2026, 9, 23),
+    );
+
+    await tester.pumpWidget(
+      material.MaterialApp(
+        theme: AppTheme.light(),
+        locale: const material.Locale('pt', 'BR'),
+        localizationsDelegates: const [
+          AppStrings.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        home: ReportViewer(
+          document: document,
+          bytes: Uint8List(0),
+          printGateway: _PrintGateway(),
+          shareGateway: _ShareGateway(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final summaryPanel = find.byWidgetPredicate(
+      (widget) =>
+          widget is material.Container &&
+          widget.decoration is material.BoxDecoration &&
+          (widget.decoration! as material.BoxDecoration).borderRadius ==
+              material.BorderRadius.circular(16),
+    );
+    expect(summaryPanel, findsWidgets);
+    expect(
+      material.ThemeData.estimateBrightnessForColor(
+        AppTheme.light().colorScheme.surfaceContainer,
+      ),
+      material.Brightness.light,
+    );
+    expect(
+      material.ThemeData.estimateBrightnessForColor(AppColors.snow),
+      material.Brightness.light,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('monthly report renders every section in all five locales', (
     tester,
   ) async {
