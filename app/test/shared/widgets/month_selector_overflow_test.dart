@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:oscar_financas/core/time/year_month.dart';
 import 'package:oscar_financas/app/navigation/app_destination.dart';
 import 'package:oscar_financas/core/localization/app_strings.dart';
 import 'package:oscar_financas/shared/controllers/financial_visibility_controller.dart';
@@ -55,4 +56,51 @@ void main() {
       },
     );
   }
+
+  testWidgets('month title uses a capital initial in every supported locale', (
+    tester,
+  ) async {
+    SharedPreferences.setMockInitialValues({});
+    final storage = await SharedPreferences.getInstance();
+    final month = MonthController(initialMonth: const YearMonth(2026, 9));
+    final visibility = FinancialVisibilityController(storage);
+    addTearDown(month.dispose);
+    addTearDown(visibility.dispose);
+
+    for (final locale in locales) {
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: locale,
+          supportedLocales: locales,
+          localizationsDelegates: const [
+            AppStrings.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          home: OscarFeatureScaffold(
+            destination: AppDestination.financial,
+            onDestinationSelected: (_) {},
+            headerKind: FeatureHeaderKind.financialMonth,
+            monthController: month,
+            visibilityController: visibility,
+            body: const SizedBox.expand(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final title = tester.widgetList<Text>(find.byType(Text)).firstWhere(
+        (text) => text.data?.contains('2026') ?? false,
+      );
+      expect(title.data, isNotEmpty, reason: locale.toLanguageTag());
+      if (locale.languageCode != 'hi') {
+        expect(
+          title.data!.runes.first,
+          inInclusiveRange('A'.runes.first, 'Z'.runes.first),
+          reason: '${locale.toLanguageTag()}: ${title.data}',
+        );
+      }
+    }
+  });
 }

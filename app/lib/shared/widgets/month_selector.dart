@@ -19,8 +19,9 @@ final class MonthSelector extends StatelessWidget {
         // rather than the BCP-47 tag (de-DE). The latter can fall back to
         // English month symbols in some locales.
         final locale = Localizations.localeOf(context).toString();
-        final label = DateFormat.yMMMM(locale)
-            .format(DateTime(value.year, value.month));
+        final label = _capitalizeInitial(
+          DateFormat.yMMMM(locale).format(DateTime(value.year, value.month)),
+        );
         final strings = AppStrings.of(context);
 
         return Row(
@@ -51,6 +52,13 @@ final class MonthSelector extends StatelessWidget {
       },
     );
   }
+}
+
+String _capitalizeInitial(String value) {
+  if (value.isEmpty) return value;
+  final runes = value.runes;
+  final first = String.fromCharCode(runes.first);
+  return '${first.toUpperCase()}${String.fromCharCodes(runes.skip(1))}';
 }
 
 final class _MonthArrow extends StatelessWidget {
