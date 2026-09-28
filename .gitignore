@@ -4,6 +4,9 @@
 !/.gitignore
 !/README.md
 !/ABRIR_OSCAR_NO_PC.bat
+!/Dockerfile
+!/.dockerignore
+!/render.yaml
 !/app/
 !/tools/
 

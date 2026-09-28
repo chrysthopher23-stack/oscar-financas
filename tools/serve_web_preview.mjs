@@ -6,7 +6,8 @@ import { extname, join, normalize } from 'node:path';
 import { PersistentMarketCache } from './persistent_market_cache.mjs';
 
 const root = normalize(join(import.meta.dirname, '..', 'app', 'build', 'web'));
-const port = Number(process.env.OSCAR_PREVIEW_PORT ?? 8765);
+const port = Number(process.env.PORT ?? process.env.OSCAR_PREVIEW_PORT ?? 8765);
+const host = process.env.HOST ?? '127.0.0.1';
 const secretPath = join(process.env.LOCALAPPDATA ?? '', 'OscarFinancas', 'awesome-api-key.txt');
 const alphaSecretPath = join(process.env.LOCALAPPDATA ?? '', 'OscarFinancas', 'alpha-vantage-api-key.txt');
 const hgSecretPath = join(process.env.LOCALAPPDATA ?? '', 'OscarFinancas', 'hg-brasil-api-key.txt');
@@ -210,13 +211,19 @@ const server = createServer(async (request, response) => {
   createReadStream(file).pipe(response);
 });
 
-server.listen(port, '127.0.0.1', () => {
-  const url = `http://127.0.0.1:${port}`;
-  if (process.env.OSCAR_PREVIEW_OPEN_BROWSER !== '0') {
+server.listen(port, host, () => {
+  const displayHost = host === '0.0.0.0' ? 'localhost' : host;
+  const url = `http://${displayHost}:${port}`;
+  if (
+    process.platform === 'win32' &&
+    process.env.OSCAR_PREVIEW_OPEN_BROWSER !== '0'
+  ) {
     execFile('cmd.exe', ['/c', 'start', '', url], { windowsHide: true });
   }
   console.log(`Oscar Financas aberto em ${url}`);
-  console.log('Feche esta janela preta para encerrar a previa.');
+  if (process.env.RENDER !== 'true') {
+    console.log('Feche esta janela preta para encerrar a previa.');
+  }
 });
 
 

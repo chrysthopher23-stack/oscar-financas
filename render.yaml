@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: oscar-financas
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: "10000"
+      - key: COINMARKETCAP_API_KEY
+        sync: false
+      - key: AWESOME_API_KEY
+        sync: false
+      - key: ALPHA_VANTAGE_API_KEY
+        sync: false
+      - key: HG_BRASIL_API_KEY
+        sync: false

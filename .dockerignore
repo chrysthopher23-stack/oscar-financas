@@ -1,0 +1,15 @@
+**
+!Dockerfile
+!app/
+!app/pubspec.yaml
+!app/pubspec.lock
+!app/lib/
+!app/lib/**
+!app/assets/
+!app/assets/**
+!app/web/
+!app/web/**
+!tools/
+!tools/serve_web_preview.mjs
+!tools/coinmarketcap_proxy.mjs
+!tools/persistent_market_cache.mjs
