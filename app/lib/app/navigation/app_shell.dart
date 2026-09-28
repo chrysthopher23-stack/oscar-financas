@@ -237,8 +237,6 @@ final class _AppShellState extends State<AppShell> {
             AppDestination.calculator => CalculatorPage(
               onDestinationSelected: widget.navigation.select,
               currency: widget.preferences.currency,
-              actionsEnabled: investmentsAllowed,
-              onBlocked: () => _showPlanNotice(PlanTier.pro),
             ),
             AppDestination.plans => PlansPage(
               onDestinationSelected: widget.navigation.select,

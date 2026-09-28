@@ -250,8 +250,8 @@ const frFrMessages = <String, String>{
   "Visão patrimonial completa, simples e internacional.":
       "Vision patrimoniale complète, simple et internationale.",
   "Tudo do Plano Plus": "Tout le forfait Plus",
-  "Investimentos, busca internacional, ações, ETFs e calculadora":
-      "Placements, recherche internationale, actions, ETF et simulateur",
+  "Investimentos, busca internacional, ações e ETFs":
+      "Placements, recherche internationale, actions et ETF",
   "Crescimento real e resumo em BRL, USD, EUR e INR":
       "Croissance réelle et synthèse en BRL, USD, EUR et INR",
   "Relatórios de 1, 3, 6 e 12 meses": "Rapports sur 1, 3, 6 et 12 mois",

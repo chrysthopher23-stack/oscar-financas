@@ -251,8 +251,8 @@ const hiInMessages = <String, String>{
   "Visão patrimonial completa, simples e internacional.":
       "संपत्ति का पूरा, सरल और अंतरराष्ट्रीय दृश्य।",
   "Tudo do Plano Plus": "प्लस प्लान की सभी सुविधाएं",
-  "Investimentos, busca internacional, ações, ETFs e calculadora":
-      "निवेश, अंतरराष्ट्रीय खोज, शेयर, ETF और कैलकुलेटर",
+  "Investimentos, busca internacional, ações e ETFs":
+      "निवेश, अंतरराष्ट्रीय खोज, शेयर और ETF",
   "Crescimento real e resumo em BRL, USD, EUR e INR":
       "BRL, USD, EUR और INR में वास्तविक वृद्धि और सारांश",
   "Relatórios de 1, 3, 6 e 12 meses": "1, 3, 6 और 12 महीनों की रिपोर्ट",

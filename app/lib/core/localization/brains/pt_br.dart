@@ -298,8 +298,8 @@ const ptBrMessages = <String, String>{
   "Visão patrimonial completa, simples e internacional.":
       "Visão patrimonial completa, simples e internacional.",
   "Tudo do Plano Plus": "Tudo do Plano Plus",
-  "Investimentos, busca internacional, ações, ETFs e calculadora":
-      "Investimentos, busca internacional, ações, ETFs e calculadora",
+  "Investimentos, busca internacional, ações e ETFs":
+      "Investimentos, busca internacional, ações e ETFs",
   "Crescimento real e resumo em BRL, USD, EUR e INR":
       "Crescimento real e resumo em BRL, USD, EUR e INR",
   "Relatórios de 1, 3, 6 e 12 meses": "Relatórios de 1, 3, 6 e 12 meses",

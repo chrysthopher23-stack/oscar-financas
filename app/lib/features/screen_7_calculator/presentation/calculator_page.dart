@@ -13,14 +13,10 @@ final class CalculatorPage extends StatefulWidget {
     super.key,
     required this.onDestinationSelected,
     required this.currency,
-    required this.actionsEnabled,
-    required this.onBlocked,
   });
 
   final ValueChanged<AppDestination> onDestinationSelected;
   final CurrencyCode currency;
-  final bool actionsEnabled;
-  final VoidCallback onBlocked;
 
   @override
   State<CalculatorPage> createState() => _CalculatorPageState();
@@ -131,9 +127,7 @@ final class _CalculatorPageState extends State<CalculatorPage> {
                   ),
                   const SizedBox(height: 16),
                   FilledButton(
-                    onPressed: widget.actionsEnabled
-                        ? () => _calculate(locale)
-                        : widget.onBlocked,
+                    onPressed: () => _calculate(locale),
                     child: const Text('Calcular cenário'),
                   ),
                   if (_projection.isNotEmpty) ...[

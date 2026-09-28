@@ -142,6 +142,18 @@ void main() {
           await tester.pumpAndSettle();
           expect(tester.takeException(), isNull);
         }
+        expect(
+          find.text(
+            brain.message('Investimentos, busca internacional, ações e ETFs'),
+          ),
+          findsOneWidget,
+        );
+        expect(
+          brain.messages.containsKey(
+            'Investimentos, busca internacional, ações, ETFs e calculadora',
+          ),
+          isFalse,
+        );
         await tester.tap(find.text(brain.message('Convidar')));
         await tester.pumpAndSettle();
         expect(

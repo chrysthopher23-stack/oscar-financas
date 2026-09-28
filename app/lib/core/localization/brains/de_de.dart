@@ -249,8 +249,8 @@ const deDeMessages = <String, String>{
   "Visão patrimonial completa, simples e internacional.":
       "Vollständige, einfache und internationale Vermögenssicht.",
   "Tudo do Plano Plus": "Alles aus dem Plus-Tarif",
-  "Investimentos, busca internacional, ações, ETFs e calculadora":
-      "Anlagen, internationale Suche, Aktien, ETFs und Rechner",
+  "Investimentos, busca internacional, ações e ETFs":
+      "Anlagen, internationale Suche, Aktien und ETFs",
   "Crescimento real e resumo em BRL, USD, EUR e INR":
       "Reales Wachstum und Übersicht in BRL, USD, EUR und INR",
   "Relatórios de 1, 3, 6 e 12 meses": "Berichte für 1, 3, 6 und 12 Monate",

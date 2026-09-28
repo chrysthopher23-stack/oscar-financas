@@ -24,8 +24,8 @@ const stage5UiTranslations = <SupportedAppLocale, Map<String, String>>{
     'Visão patrimonial completa, simples e internacional.':
         'A complete, simple and international wealth view.',
     'Tudo do Plano Plus': 'Everything in the Plus Plan',
-    'Investimentos, busca internacional, ações, ETFs e calculadora':
-        'Investments, international search, stocks, ETFs and calculator',
+    'Investimentos, busca internacional, ações e ETFs':
+        'Investments, international search, stocks and ETFs',
     'Crescimento real e resumo em BRL, USD, EUR e INR':
         'Real growth and summary in BRL, USD, EUR and INR',
     'Relatórios de 1, 3, 6 e 12 meses': 'Reports for 1, 3, 6 and 12 months',
@@ -103,8 +103,8 @@ const stage5UiTranslations = <SupportedAppLocale, Map<String, String>>{
     'Visão patrimonial completa, simples e internacional.':
         'Vollständige, einfache und internationale Vermögenssicht.',
     'Tudo do Plano Plus': 'Alles aus dem Plus-Tarif',
-    'Investimentos, busca internacional, ações, ETFs e calculadora':
-        'Anlagen, internationale Suche, Aktien, ETFs und Rechner',
+    'Investimentos, busca internacional, ações e ETFs':
+        'Anlagen, internationale Suche, Aktien und ETFs',
     'Crescimento real e resumo em BRL, USD, EUR e INR':
         'Reales Wachstum und Übersicht in BRL, USD, EUR und INR',
     'Relatórios de 1, 3, 6 e 12 meses': 'Berichte für 1, 3, 6 und 12 Monate',
@@ -174,8 +174,8 @@ const stage5UiTranslations = <SupportedAppLocale, Map<String, String>>{
     'Visão patrimonial completa, simples e internacional.':
         'Vision patrimoniale complète, simple et internationale.',
     'Tudo do Plano Plus': 'Tout le forfait Plus',
-    'Investimentos, busca internacional, ações, ETFs e calculadora':
-        'Placements, recherche internationale, actions, ETF et simulateur',
+    'Investimentos, busca internacional, ações e ETFs':
+        'Placements, recherche internationale, actions et ETF',
     'Crescimento real e resumo em BRL, USD, EUR e INR':
         'Croissance réelle et synthèse en BRL, USD, EUR et INR',
     'Relatórios de 1, 3, 6 e 12 meses': 'Rapports sur 1, 3, 6 et 12 mois',
@@ -243,8 +243,8 @@ const stage5UiTranslations = <SupportedAppLocale, Map<String, String>>{
     'Visão patrimonial completa, simples e internacional.':
         'संपत्ति का पूरा, सरल और अंतरराष्ट्रीय दृश्य।',
     'Tudo do Plano Plus': 'प्लस प्लान की सभी सुविधाएं',
-    'Investimentos, busca internacional, ações, ETFs e calculadora':
-        'निवेश, अंतरराष्ट्रीय खोज, शेयर, ETF और कैलकुलेटर',
+    'Investimentos, busca internacional, ações e ETFs':
+        'निवेश, अंतरराष्ट्रीय खोज, शेयर और ETF',
     'Crescimento real e resumo em BRL, USD, EUR e INR':
         'BRL, USD, EUR और INR में वास्तविक वृद्धि और सारांश',
     'Relatórios de 1, 3, 6 e 12 meses': '1, 3, 6 और 12 महीनों की रिपोर्ट',

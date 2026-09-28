@@ -84,7 +84,7 @@ final class _PlansPageState extends State<PlansPage> {
               tagline: 'Visão patrimonial completa, simples e internacional.',
               benefits: const [
                 'Tudo do Plano Plus',
-                'Investimentos, busca internacional, ações, ETFs e calculadora',
+                'Investimentos, busca internacional, ações e ETFs',
                 'Carteira de criptoativos',
                 'Objetivos financeiros com evolução mês a mês',
                 'Crescimento real e resumo em BRL, USD, EUR e INR',

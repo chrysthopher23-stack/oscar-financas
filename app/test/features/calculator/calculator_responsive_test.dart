@@ -30,8 +30,6 @@ void main() {
           home: CalculatorPage(
             onDestinationSelected: (_) {},
             currency: CurrencyCode.brl,
-            actionsEnabled: true,
-            onBlocked: () {},
           ),
         ),
       );
@@ -48,6 +46,10 @@ void main() {
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
       await tester.ensureVisible(find.byType(FilledButton));
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
+        isNotNull,
+      );
       await tester.tap(find.byType(FilledButton));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);

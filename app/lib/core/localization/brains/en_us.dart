@@ -249,8 +249,8 @@ const enUsMessages = <String, String>{
   "Visão patrimonial completa, simples e internacional.":
       "A complete, simple and international wealth view.",
   "Tudo do Plano Plus": "Everything in the Plus Plan",
-  "Investimentos, busca internacional, ações, ETFs e calculadora":
-      "Investments, international search, stocks, ETFs and calculator",
+  "Investimentos, busca internacional, ações e ETFs":
+      "Investments, international search, stocks and ETFs",
   "Crescimento real e resumo em BRL, USD, EUR e INR":
       "Real growth and summary in BRL, USD, EUR and INR",
   "Relatórios de 1, 3, 6 e 12 meses": "Reports for 1, 3, 6 and 12 months",
