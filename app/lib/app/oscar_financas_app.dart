@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -71,6 +72,44 @@ final class _OscarFinancasAppState extends State<OscarFinancasApp>
     builder: (context, _) => MaterialApp(
       debugShowCheckedModeBanner: false,
       title: ProductIdentity.appName,
+      builder: (context, child) {
+        if (!kIsWeb || child == null) return child ?? const SizedBox.shrink();
+        final media = MediaQuery.of(context);
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            final availableWidth = constraints.maxWidth.isFinite
+                ? constraints.maxWidth
+                : media.size.width;
+            final availableHeight = constraints.maxHeight.isFinite
+                ? constraints.maxHeight
+                : media.size.height;
+            final useFullViewport =
+                availableHeight <= 0 || availableWidth / availableHeight <= .75;
+            final frameWidth = useFullViewport
+                ? availableWidth
+                : availableWidth
+                      .clamp(0.0, availableHeight * .75)
+                      .clamp(0.0, 768.0);
+            final frameHeight = useFullViewport
+                ? availableHeight
+                : frameWidth / .75;
+            final frameSize = Size(frameWidth, frameHeight);
+
+            return ColoredBox(
+              color: const Color(0xFF111315),
+              child: Center(
+                child: SizedBox.fromSize(
+                  size: frameSize,
+                  child: MediaQuery(
+                    data: media.copyWith(size: frameSize),
+                    child: child,
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
       locale: widget.preferences.locale.locale,
       supportedLocales: SupportedAppLocale.values.map((item) => item.locale),
       localizationsDelegates: const [
