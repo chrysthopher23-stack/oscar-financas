@@ -113,6 +113,28 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(tester.takeException(), isNull);
+        expect(
+          find.text(
+            brain.message('Escolha a clareza que acompanha seu momento'),
+          ),
+          findsNothing,
+        );
+        expect(
+          find.text(
+            brain.message(
+              'Todos os planos preservam seus dados e a navegação completa. Recursos avançados são explicados no ponto de uso.',
+            ),
+          ),
+          findsNothing,
+        );
+        expect(
+          find.text(
+            brain.message(
+              'Toque em um plano para visualizar os recursos disponíveis.',
+            ),
+          ),
+          findsNothing,
+        );
         await tester.tap(find.text(brain.message('Anual')));
         await tester.pumpAndSettle();
         for (var i = 0; i < 8; i++) {

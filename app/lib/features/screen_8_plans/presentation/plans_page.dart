@@ -38,15 +38,6 @@ final class _PlansPageState extends State<PlansPage> {
         builder: (context, _) => ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            Text(
-              'Escolha a clareza que acompanha seu momento',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Todos os planos preservam seus dados e a navegação completa. Recursos avançados são explicados no ponto de uso.',
-            ),
-            const SizedBox(height: 18),
             SegmentedButton<BillingCycle>(
               showSelectedIcon: false,
               segments: const [
@@ -60,15 +51,7 @@ final class _PlansPageState extends State<PlansPage> {
               onSelectionChanged: (value) =>
                   setState(() => cycle = value.first),
             ),
-            if (widget.entitlements.canSelectPlan)
-              const Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Text(
-                  'Toque em um plano para visualizar os recursos disponíveis.',
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
-            const SizedBox(height: 18),
+            const SizedBox(height: 12),
             _PlanCard(
               title: 'Plano Básico',
               tagline: 'Organização financeira essencial, sem custo.',
