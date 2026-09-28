@@ -15,6 +15,9 @@ RUN curl --fail --location --retry 5 \
       "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
       | tar -xJ -C /opt
 
+# The Flutter archive may have ownership metadata that Git rejects in Docker builds.
+RUN git config --global --add safe.directory /opt/flutter
+
 WORKDIR /workspace/app
 COPY app/pubspec.yaml app/pubspec.lock ./
 RUN flutter pub get --enforce-lockfile
